@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.studentexpensetracker.ui.SubscriptionsController"
+      styleClass="content-area" spacing="16">
+
+    <VBox spacing="4">
+        <Label text="Subscriptions" styleClass="page-title"/>
+        <Label text="Manage your recurring services and billing cycles" styleClass="page-subtitle"/>
+    </VBox>
+
+    <VBox styleClass="card" spacing="14">
+        <Label text="Filters" styleClass="section-heading"/>
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <Label text="Search" styleClass="filter-label"/>
+            <TextField fx:id="searchTextField" promptText="Search service name..." HBox.hgrow="ALWAYS"/>
+            <CheckBox fx:id="activeOnlyCheckBox" text="Active only"/>
+            <Button text="Refresh" styleClass="btn-secondary" onAction="#onRefresh"/>
+        </HBox>
+    </VBox>
+
+    <VBox styleClass="card" spacing="14" VBox.vgrow="ALWAYS">
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Button text="+ Add Subscription" styleClass="btn-primary" onAction="#onAddSubscription"/>
+            <Button text="Edit" styleClass="btn-secondary" onAction="#onEditSelected"/>
+            <Button text="Toggle Status" styleClass="btn-secondary" onAction="#onToggleStatus"/>
+            <Button text="Delete" styleClass="btn-danger" onAction="#onDeleteSelected"/>
+            <Region HBox.hgrow="ALWAYS"/>
+        </HBox>
+
+        <Label fx:id="statusLabel" text="" styleClass="status-label"/>
+
+        <TableView fx:id="subscriptionsTable" VBox.vgrow="ALWAYS" style="-fx-pref-height: 400;">
+            <columns>
+                <TableColumn fx:id="serviceColumn" text="Service" prefWidth="240"/>
+                <TableColumn fx:id="billingCycleColumn" text="Billing Cycle" prefWidth="130"/>
+                <TableColumn fx:id="costColumn" text="Cost" prefWidth="120"/>
+                <TableColumn fx:id="monthlyEquivalentColumn" text="Monthly Equiv." prefWidth="140"/>
+                <TableColumn fx:id="nextRenewalColumn" text="Next Renewal" prefWidth="140"/>
+                <TableColumn fx:id="statusColumn" text="Status" prefWidth="110"/>
+            </columns>
+        </TableView>
+    </VBox>
+</VBox>

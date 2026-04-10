@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.studentexpensetracker.ui.DashboardController"
+            fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: #F4F6FA; -fx-background: #F4F6FA;">
+    <VBox spacing="20" styleClass="content-area">
+
+        <Label text="Dashboard" styleClass="page-title"/>
+
+        <HBox spacing="16">
+            <VBox styleClass="card" spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="Spent This Month" styleClass="card-title"/>
+                <Label fx:id="monthSpendLabel" text="£0.00" styleClass="card-value-accent"/>
+            </VBox>
+            <VBox styleClass="card" spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="Upcoming Renewals" styleClass="card-title"/>
+                <Label fx:id="upcomingRenewalsLabel" text="0" styleClass="card-value"/>
+                <Label text="within 30 days" styleClass="page-subtitle"/>
+            </VBox>
+            <VBox styleClass="card" spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="Budget Alerts" styleClass="card-title"/>
+                <Label fx:id="budgetAlertsLabel" text="0" styleClass="card-value-warning"/>
+                <Label text="categories over threshold" styleClass="page-subtitle"/>
+            </VBox>
+        </HBox>
+
+        <GridPane hgap="16" vgap="16">
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="50"/>
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="50"/>
+            </columnConstraints>
+
+            <VBox styleClass="card" spacing="12" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Label text="Spend by Category" styleClass="section-heading"/>
+                <PieChart fx:id="spendByCategoryChart" legendVisible="true" labelsVisible="false" prefHeight="280" animated="false"/>
+            </VBox>
+
+            <VBox styleClass="card" spacing="12" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <Label text="Spend Trend (Last 30 Days)" styleClass="section-heading"/>
+                <LineChart fx:id="spendTrendChart" createSymbols="false" animated="false" prefHeight="280" legendVisible="false">
+                    <xAxis><CategoryAxis tickLabelsVisible="false"/></xAxis>
+                    <yAxis><NumberAxis/></yAxis>
+                </LineChart>
+            </VBox>
+
+            <VBox styleClass="card" spacing="12" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2">
+                <Label text="Top Categories This Month" styleClass="section-heading"/>
+                <BarChart fx:id="topCategoriesChart" animated="false" prefHeight="240" legendVisible="false">
+                    <xAxis><CategoryAxis/></xAxis>
+                    <yAxis><NumberAxis/></yAxis>
+                </BarChart>
+            </VBox>
+        </GridPane>
+    </VBox>
+</ScrollPane>

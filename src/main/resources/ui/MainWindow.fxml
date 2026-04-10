@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.studentexpensetracker.ui.MainWindowController"
+            styleClass="app-shell">
+
+    <left>
+        <VBox styleClass="sidebar" spacing="0">
+            <VBox styleClass="sidebar-logo-box" spacing="4">
+                <Label text="ExpenseTracker" styleClass="sidebar-logo"/>
+                <Label text="Student Budget Manager" styleClass="sidebar-tagline"/>
+            </VBox>
+
+            <Label text="MAIN MENU" styleClass="sidebar-section-label"/>
+
+            <fx:include fx:id="navBar" source="NavBar.fxml"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Separator/>
+            <VBox spacing="4" style="-fx-padding: 12 20 16 20;">
+                <Label fx:id="databaseStatusLabel" text="DB: Unknown" styleClass="db-status"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane fx:id="contentStack" styleClass="app-shell">
+            <fx:include fx:id="dashboardContent" source="DashboardView.fxml"/>
+            <fx:include fx:id="expensesContent" source="ExpensesView.fxml"/>
+            <fx:include fx:id="subscriptionsContent" source="SubscriptionsView.fxml"/>
+            <fx:include fx:id="budgetsContent" source="BudgetsView.fxml"/>
+        </StackPane>
+    </center>
+</BorderPane>

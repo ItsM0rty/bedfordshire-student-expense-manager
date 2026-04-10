@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.studentexpensetracker.ui.ExpensesController"
+      styleClass="content-area" spacing="16">
+
+    <VBox spacing="4">
+        <Label text="Expenses" styleClass="page-title"/>
+        <Label text="Track and manage your spending" styleClass="page-subtitle"/>
+    </VBox>
+
+    <VBox styleClass="card" spacing="14">
+        <Label text="Filters" styleClass="section-heading"/>
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <Label text="From" styleClass="filter-label"/>
+            <DatePicker fx:id="fromDatePicker" prefWidth="150"/>
+            <Label text="To" styleClass="filter-label"/>
+            <DatePicker fx:id="toDatePicker" prefWidth="150"/>
+            <Label text="Category" styleClass="filter-label"/>
+            <ComboBox fx:id="categoryComboBox" prefWidth="160"/>
+            <Label text="Search" styleClass="filter-label"/>
+            <TextField fx:id="searchTextField" promptText="Search description..." HBox.hgrow="ALWAYS"/>
+            <Button text="Refresh" styleClass="btn-secondary" onAction="#onRefresh"/>
+        </HBox>
+    </VBox>
+
+    <VBox styleClass="card" spacing="14" VBox.vgrow="ALWAYS">
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Button text="+ Add Expense" styleClass="btn-primary" onAction="#onAddExpense"/>
+            <Button text="Edit" styleClass="btn-secondary" onAction="#onEditSelected"/>
+            <Button text="Delete" styleClass="btn-danger" onAction="#onDeleteSelected"/>
+            <Button text="Export CSV" styleClass="btn-success" onAction="#onExportCsv"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="Total:" styleClass="filter-label"/>
+            <Label fx:id="totalLabel" text="£0.00" styleClass="total-value"/>
+        </HBox>
+
+        <Label fx:id="statusLabel" text="" styleClass="status-label"/>
+
+        <TableView fx:id="expensesTable" VBox.vgrow="ALWAYS" style="-fx-pref-height: 400;">
+            <columns>
+                <TableColumn fx:id="dateColumn" text="Date" prefWidth="120"/>
+                <TableColumn fx:id="categoryColumn" text="Category" prefWidth="160"/>
+                <TableColumn fx:id="typeColumn" text="Type" prefWidth="120"/>
+                <TableColumn fx:id="descriptionColumn" text="Description" prefWidth="380"/>
+                <TableColumn fx:id="amountColumn" text="Amount" prefWidth="130"/>
+            </columns>
+        </TableView>
+    </VBox>
+</VBox>

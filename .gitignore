@@ -1,0 +1,30 @@
+# ===== Build output =====
+target/
+out/
+
+# ===== IDE files =====
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+*.swp
+*~
+
+# ===== OS files =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Miscellaneous =====
+miscellaneous/
+docs/
+
+# ===== Binary document formats (submit separately, not via git) =====
+*.docx
+*.pdf
+
+# ===== Sensitive config (password in properties, use env vars instead) =====
+# Uncomment below if you move to env-var-only config:
+# src/main/resources/application.properties
